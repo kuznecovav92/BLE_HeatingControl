@@ -1,0 +1,15 @@
+/autogen/
+/gecko_sdk_4.2.0/
+
+**/*.lst
+**/*.d
+**/*.o
+**/*.mk
+**/*.xcl
+**/*.log
+**/*.txt
+**/*.map
+**/*.out
+**/*.axf
+makefile
+/ota_dfu/

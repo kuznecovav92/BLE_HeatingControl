@@ -1,0 +1,11 @@
+# Specify filepatterns you want git to ignore.
+**/*.bak
+**/*.pdm
+**/*.settings
+**/*.projectlinkstore
+**/*.vs
+**/*.uceditor
+
+
+BgBuild_Log.txt
+readme.html
