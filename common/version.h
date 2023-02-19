@@ -1,0 +1,6 @@
+#pragma once
+
+
+#define VERSION_FIRMWARE_MAJOR 5
+#define VERSION_FIRMWARE_MINOR 4
+#define VERSION_FIRMWARE_PATCH 7

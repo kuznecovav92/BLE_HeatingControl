@@ -26,22 +26,26 @@ include:
 sdk: {id: gecko_sdk, version: 4.2.0}
 toolchain_settings: []
 component:
+- {id: iostream_rtt}
 - {id: bluetooth_feature_gatt_server}
-- {id: in_place_ota_dfu}
 - {id: bluetooth_feature_sm}
-- {id: bluetooth_feature_legacy_advertiser}
 - {id: mpu}
+- {id: bluetooth_feature_legacy_advertiser}
 - {id: EFR32BG21B020F768IM32}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
 - {id: bluetooth_stack}
 - {id: rail_util_pti}
 - {id: bluetooth_feature_gatt}
+- {id: uartdrv_core}
 - {id: bluetooth_feature_legacy_scanner}
+- {id: app_log}
 - {id: bt_post_build}
+- {id: micriumos_kernel}
 - {id: bluetooth_feature_connection}
 - {id: bluetooth_feature_system}
 - {id: component_catalog}
+- {id: app_ota_dfu}
 - {id: bootloader_interface}
 - {id: app_assert}
 other_file:
@@ -50,7 +54,6 @@ other_file:
 - {path: image/readme_img2.png}
 - {path: image/readme_img3.png}
 - {path: image/readme_img4.png}
-config_file: []
 configuration:
 - {name: SL_STACK_SIZE, value: '2752'}
 - {name: SL_HEAP_SIZE, value: '9200'}

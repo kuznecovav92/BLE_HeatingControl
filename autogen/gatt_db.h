@@ -22,6 +22,7 @@ extern const sli_bt_gattdb_t gattdb;
 #define gattdb_system_id                      24
 #define gattdb_ota                            25
 #define gattdb_ota_control                    27
+#define gattdb_ota_data                       29
 
 
 #endif // __GATT_DB_H

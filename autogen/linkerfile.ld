@@ -28,7 +28,7 @@
  ******************************************************************************/
  MEMORY
  {
-   FLASH   (rx)  : ORIGIN = 0x12000, LENGTH = 0xac000
+   FLASH   (rx)  : ORIGIN = 0x4000, LENGTH = 0xba000
    RAM     (rwx) : ORIGIN = 0x20000000, LENGTH = 0x10000
  }
 
@@ -175,6 +175,7 @@ SECTIONS
   {
     . = ALIGN(4);
     __bss_start__ = .;
+    *(SEGGER_RTT)
     *(SORT_BY_ALIGNMENT(.bss*))
     *(COMMON)
     . = ALIGN(4);
@@ -194,7 +195,7 @@ SECTIONS
 
   __heap_size = __HeapLimit - __HeapBase;
   __ram_end__ = 0x20000000 + 0x10000;
-  __main_flash_end__ = 0x12000 + 0xac000;
+  __main_flash_end__ = 0x4000 + 0xba000;
 
    /* This is where we handle flash storage blocks. We use dummy sections for finding the configured
    * block sizes and then "place" them at the end of flash when the size is known. */
@@ -218,6 +219,6 @@ SECTIONS
   ASSERT((linker_storage_begin >= (__etext + SIZEOF(.data))), "FLASH memory overflowed !")
 
 
-  app_flash_end = 0x12000 + 0xac000;
+  app_flash_end = 0x4000 + 0xba000;
   ASSERT( (linker_nvm_begin + SIZEOF(.nvm)) <= app_flash_end, "NVM3 is excessing the flash size !")
 }
