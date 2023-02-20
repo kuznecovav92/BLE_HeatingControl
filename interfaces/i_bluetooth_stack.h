@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include "sl_status.h"
 #include "tools/types.h"
-//#include "host/common_communication.h"
 
 class IBluetoothStack {
 public:

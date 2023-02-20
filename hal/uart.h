@@ -88,7 +88,7 @@ public:
 	 * \brief Проинициализировать нотификатор
 	 * \param notifyOfRxDataReady Ссылка на нотификатор
 	 */
-	void QueuePusherInit(typeQueuePusher &queuePusher) override {
+	void QueuePusherInit(tools::typeQueuePusher &queuePusher) override {
 		_queuePusher = &queuePusher;
 	}
 
@@ -107,7 +107,7 @@ private:
 	UARTDRV_HandleData_t _handle;
 	const IRQn _irqNumber;
 	typeTransmiteCallback _transmiteCallback; /* Указатель на callback, который вызывается по завершении передачи */
-	typeQueuePusher* _queuePusher;
+	tools::typeQueuePusher* _queuePusher;
 	os::Mutex _mutex;
 #ifdef OS_TIMER_ENABLED
 	uint32_t _baudRateDesired;

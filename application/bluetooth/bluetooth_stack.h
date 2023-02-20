@@ -6,9 +6,9 @@ extern "C" {
 }
 #include "interfaces/i_bluetooth_stack.h"
 #include "interfaces/i_settings_changed_notification.h"
-#include "builders/bt_connections_builder.h"
 #include "application/bluetooth/bt_connections.h"
 #include "sl_bluetooth_connection_config.h"
+#include "builders/bt_connections_builder.h"
 #include "os/os_critical_section.h"
 
 namespace bluetooth {

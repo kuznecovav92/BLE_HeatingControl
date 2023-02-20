@@ -3,6 +3,7 @@
 #include <stddef.h>
 #include "tools/memory/buffer_types.h"
 #include "tools/queue/queue_types.h"
+#include "os/os_timer.h"
 
 class IDataExchange {
 public:
@@ -33,7 +34,7 @@ public:
      * \brief Проинициализировать нотификатор
      * \param notifyOfRxDataReady Ссылка на нотификатор
      */
-    virtual void QueuePusherInit(typeQueuePusher &queuePusher) = 0;
+    virtual void QueuePusherInit(tools::typeQueuePusher &queuePusher) = 0;
 #ifdef OS_TIMER_ENABLED
     /**
      * @brief Выполнить установку скорости интерфейса с задержкой

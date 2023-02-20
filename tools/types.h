@@ -19,3 +19,12 @@ public:
     //     _count = 0;
     // }
 };
+
+#pragma pack(push, 1)
+
+typedef struct {
+    uint8_t lenght;
+    uint8_t *array;
+} array_t;
+
+#pragma pack(pop)
