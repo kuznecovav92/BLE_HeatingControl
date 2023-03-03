@@ -44,7 +44,9 @@ component:
 - {id: micriumos_kernel}
 - {id: bluetooth_feature_connection}
 - {id: bluetooth_feature_system}
+- {id: bluetooth_feature_afh}
 - {id: component_catalog}
+- {id: bluetooth_feature_connection_phy_update}
 - {id: app_ota_dfu}
 - {id: bootloader_interface}
 - {id: app_assert}
