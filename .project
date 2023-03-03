@@ -1597,9 +1597,9 @@
 			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32BG21/Include/efr32bg21_wdog.h</locationURI>
 		</link>
 		<link>
-			<name>gecko_sdk_4.2.0/platform/Device/SiliconLabs/EFR32BG21/Include/efr32bg21b020f768im32.h</name>
+			<name>gecko_sdk_4.2.0/platform/Device/SiliconLabs/EFR32BG21/Include/efr32bg21a020f768im32.h</name>
 			<type>1</type>
-			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32BG21/Include/efr32bg21b020f768im32.h</locationURI>
+			<locationURI>STUDIO_SDK_LOC/platform/Device/SiliconLabs/EFR32BG21/Include/efr32bg21a020f768im32.h</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.2.0/platform/Device/SiliconLabs/EFR32BG21/Include/em_device.h</name>

@@ -29,9 +29,9 @@ component:
 - {id: iostream_rtt}
 - {id: bluetooth_feature_gatt_server}
 - {id: bluetooth_feature_sm}
-- {id: mpu}
 - {id: bluetooth_feature_legacy_advertiser}
-- {id: EFR32BG21B020F768IM32}
+- {id: mpu}
+- {id: EFR32BG21A020F768IM32}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
 - {id: bluetooth_stack}
