@@ -11,7 +11,7 @@ extern "C" {
 #include "builders/bt_settings_builder.h"
 
 namespace bluetooth {
-#define _kDeviceName "MB-03"
+#define _kDeviceName "Heater control"
 Stack::responseData_t Stack::_responseData = {
     .flagsLen = 2,
     .flagsType = 0x01,
@@ -155,7 +155,7 @@ void Stack::Handle(sl_bt_msg_t *event) {
     case sl_bt_evt_system_boot_id: {
         /* Проинициализировать характеристики */
         char temp[25];
-        snprintf(temp, sizeof(temp), "v%d.%d.%d",
+        snprintf(temp, sizeof(temp), "%d.%d.%d",
                  VERSION_FIRMWARE_MAJOR,
                  VERSION_FIRMWARE_MINOR,
                  VERSION_FIRMWARE_PATCH);
@@ -206,7 +206,7 @@ void Stack::Handle(sl_bt_msg_t *event) {
                                                 3000 / 10,
                                                 0,
                                                 0xffff);
-
+        AdvertisementsStart();
         break;
     }
         // -------------------------------

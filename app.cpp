@@ -33,11 +33,13 @@ extern "C" {
   #include "sl_bluetooth.h"
 }
 #include "app.h"
+#include "application/bluetooth/bluetooth_stack.h"
+#include "builders/bt_settings_builder.h"
 
 /**************************************************************************//**
  * Application Init.
  *****************************************************************************/
-extern "C" void app_init(void)
-{
-
+extern "C" void app_init(void) {
+  bluetooth::Stack::Instance().Init(BtConnectionsBuilder::Make());
+  SettingsBuilder::Make().RoleSet(bluetooth::Role::Peripherial);
 }
