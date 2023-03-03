@@ -11,5 +11,8 @@
 **/*.map
 **/*.out
 **/*.axf
+**/*.hex
+**/*.bin
+**/*.s37
 makefile
 /ota_dfu/

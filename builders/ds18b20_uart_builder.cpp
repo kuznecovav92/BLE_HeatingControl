@@ -1,4 +1,4 @@
-#include "host_uart_builder.h"
+#include "ds18b20_uart_builder.h"
 #include "tools/interrupt.h"
 
 ISR_HANDLER(USART2_RX, HostUartBuilder::Make().RxInterruptHandler);
@@ -11,14 +11,14 @@ void TransmiteCallback(struct UARTDRV_HandleData *handle,
 
 Uart &HostUartBuilder::Make() {
 	if(uartPointer == nullptr) {
-		constexpr auto queueSize = 4;
+		constexpr auto queueSize = 1;
 		/* Define RX and TX buffer queues */
 		DEFINE_BUF_QUEUE(queueSize, bufferQueueRxUart);
 		DEFINE_BUF_QUEUE(queueSize, bufferQueueTxUart);
 		/* Create uartdrv initialization structs */
 		const UARTDRV_InitUart_t config = {
 			.port = USART2,
-			.baudRate = 921600,
+			.baudRate = 9600,
 			.txPort = gpioPortD,
 			.rxPort = gpioPortD,
 			.txPin = 1,
@@ -29,6 +29,10 @@ Uart &HostUartBuilder::Make() {
 			.oversampling = usartOVS16,
 			.mvdis = false,
 			.fcType = uartdrvFlowControlNone,
+			.ctsPort = gpioPortD,
+			.ctsPin = 0,
+			.rtsPort = gpioPortD,
+			.rtsPin = 0,
 			.rxQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueRxUart,
 			.txQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueTxUart
 		};

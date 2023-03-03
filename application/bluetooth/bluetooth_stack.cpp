@@ -573,7 +573,7 @@ void Stack::Handle(sl_bt_msg_t *event) {
     }
 
     case sl_bt_evt_connection_rssi_id: {
-        sl_bt_evt_connection_rssi_t* rssi_evt = (sl_bt_evt_connection_rssi_t*)&(event->data);
+        // sl_bt_evt_connection_rssi_t* rssi_evt = (sl_bt_evt_connection_rssi_t*)&(event->data);
         // _bluetooth->ConnectionRssiCommandCompletedCallback(rssi_evt->connection,
         //                                                    rssi_evt->status,
         //                                                    rssi_evt->rssi);
