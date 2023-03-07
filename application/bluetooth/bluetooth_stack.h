@@ -53,7 +53,6 @@ private:
 	uint8_t _advHandle;
 	BtConnections_t *_connections;
 
-
 	Stack() : _connections(nullptr) {
 	}
 	/**
@@ -109,6 +108,7 @@ private:
 	uint32_t IdentityAddressGet(uint8_t (&address)[6], uint8_t &type) override;
 	uint32_t ConnectionRssiRequest(uint8_t connectionHandle) override;
 	void PasskeyConfirmCallback(bool isConfirmed, uint8_t connectionHandle) override;
+
 };
 
 }

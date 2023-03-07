@@ -390,20 +390,20 @@ void Stack::Handle(sl_bt_msg_t *event) {
             ConnectionClose(status_evt->connection);
             break;
         }
-        // if (status_evt->status_flags == sl_bt_gatt_server_client_config) {
-        //     LogCR(LogTypes::BluetoothStack,
-        //           APP_LOG_COLOR_WHITE"characteristic= %d , GAT_SERVER_CLIENT_CONFIG_FLAG = %d",
-        //           status_evt->characteristic,
-        //           status_evt->client_config_flags);
-        //     if (status_evt->characteristic == gattdb_spp_data) {
-        //         if (status_evt->client_config_flags == sl_bt_gatt_notification) {
-        //             if (connection->StateGet() != spp::State::WaitEnableNotification)
-        //                 break;
-        //             connection->CharacteristicHandleSet(gattdb_spp_data);
-        //             StateSet(*connection, spp::State::DataExchange);
-        //         }
-        //     }
-        // }
+        if (status_evt->status_flags == sl_bt_gatt_server_client_config) {
+            LogCR(LogTypes::BluetoothStack,
+                  APP_LOG_COLOR_WHITE"characteristic= %d , GAT_SERVER_CLIENT_CONFIG_FLAG = %d",
+                  status_evt->characteristic,
+                  status_evt->client_config_flags);
+            if (status_evt->characteristic == gattdb_temperature_measurement) {
+                if (status_evt->client_config_flags == sl_bt_gatt_indication) {
+                    /* Запустить таймер для периодической индикации измеренных значений клиенту */
+
+                } else if(status_evt->client_config_flags == sl_bt_gatt_disable) {
+
+                }
+            }
+        }
         break;
     }
 
@@ -738,11 +738,11 @@ void Stack::PasskeyConfirmCallback(bool isConfirmed, uint8_t connectionHandle) {
     }
 }
 
-uint32_t Stack::OtaStart()
-{
+uint32_t Stack::OtaStart() {
     SettingsBuilder::Make().RoleSet(bluetooth::Role::Ota);
     return SL_STATUS_OK;
 }
+
 }
 
 void sl_bt_on_event(sl_bt_msg_t* event) {
