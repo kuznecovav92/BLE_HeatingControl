@@ -150,7 +150,8 @@ private:
      * @return Значение в тиках задачи таймера
      */
     static inline OS_TICK MsToTicksTask(ms_t value) {
-        return MsToTicks(value) / (OS_CFG_TICK_RATE_HZ / OS_CFG_TMR_TASK_RATE_HZ);
+        RTOS_ERR err;
+        return MsToTicks(value) / (OSTimeTickRateHzGet(&err) / OS_CFG_TMR_TASK_RATE_HZ);
     }
 
     /**
@@ -159,7 +160,8 @@ private:
      * @return Значение в милисекундах
      */
     static inline ms_t TicksTaskToMs(OS_TICK value) {
-        return TicksToMs(value * (OS_CFG_TICK_RATE_HZ / OS_CFG_TMR_TASK_RATE_HZ));
+        RTOS_ERR err;
+        return TicksToMs(value * (OSTimeTickRateHzGet(&err) / OS_CFG_TMR_TASK_RATE_HZ));
     }
 };
 

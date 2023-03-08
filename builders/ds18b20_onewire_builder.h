@@ -1,14 +1,14 @@
 #pragma once
-#include "hal/uart.h"
+#include "hal/onewire_emul.h"
 
-class HostUartBuilder {
+class Ds18b20_OneWireBuilder {
 public:
-	static Uart &Make();
+	static OneWireEmul &Make();
 	static void TransmiteCallback(struct UARTDRV_HandleData *handle,
 								  Ecode_t transferStatus,
 								  uint8_t *data,
 								  UARTDRV_Count_t transferCount);
 
 private:
-	static Uart *uartPointer;
+	static OneWireEmul *_oneWirePointer;
 };

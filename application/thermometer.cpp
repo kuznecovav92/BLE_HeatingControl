@@ -1,4 +1,5 @@
 #include "thermometer.h"
+#include "tools/logs/logs.h"
 
 void Thermometer::TimerMesurementCallBack(void* object) {
 	LogCR(LogTypes::BluetoothStack, APP_LOG_COLOR_MAGENTA"TimerCallBack");

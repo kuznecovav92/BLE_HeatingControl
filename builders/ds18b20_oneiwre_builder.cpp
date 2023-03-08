@@ -1,16 +1,16 @@
-#include "ds18b20_uart_builder.h"
+#include "ds18b20_onewire_builder.h"
 #include "tools/interrupt.h"
 
-ISR_HANDLER(USART2_RX, HostUartBuilder::Make().RxInterruptHandler);
-Uart *HostUartBuilder::uartPointer = nullptr;
+OneWireEmul *Ds18b20_OneWireBuilder::_oneWirePointer = nullptr;
+ISR_HANDLER(USART2_RX, Ds18b20_OneWireBuilder::Make().RxInterruptHandler);
 
 void TransmiteCallback(struct UARTDRV_HandleData *handle,
 					   Ecode_t transferStatus,
 					   uint8_t *data,
 					   UARTDRV_Count_t transferCount);
 
-Uart &HostUartBuilder::Make() {
-	if(uartPointer == nullptr) {
+OneWireEmul &Ds18b20_OneWireBuilder::Make() {
+	if(_oneWirePointer == nullptr) {
 		constexpr auto queueSize = 1;
 		/* Define RX and TX buffer queues */
 		DEFINE_BUF_QUEUE(queueSize, bufferQueueRxUart);
@@ -36,22 +36,21 @@ Uart &HostUartBuilder::Make() {
 			.rxQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueRxUart,
 			.txQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueTxUart
 		};
-		static Uart uart(USART2_RX_IRQn,
-						 TransmiteCallback);
-		uart.Init(config);
-		uartPointer = &uart;
+		static OneWireEmul onewire(USART2_RX_IRQn, TransmiteCallback);
+		onewire.Init(config);
+		_oneWirePointer = &onewire;
 	}
-	return *uartPointer;
+	return *_oneWirePointer;
 }
 
-void HostUartBuilder::TransmiteCallback(struct UARTDRV_HandleData *handle,
+void Ds18b20_OneWireBuilder::TransmiteCallback(struct UARTDRV_HandleData *handle,
 										Ecode_t transferStatus,
 										uint8_t *data,
 										UARTDRV_Count_t transferCount) {
-	if (uartPointer != nullptr)
-		uartPointer->TransmiteCallback(*uartPointer,
-									   handle,
-									   transferStatus,
-									   data,
-									   transferCount);
+	if (_oneWirePointer != nullptr)
+		_oneWirePointer->TransmiteCallback(*_oneWirePointer,
+										handle,
+										transferStatus,
+										data,
+										transferCount);
 }
