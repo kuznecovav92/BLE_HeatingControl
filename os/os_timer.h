@@ -131,6 +131,7 @@ public:
     }
 
 private:
+    static constexpr uint32_t OS_CFG_TMR_TASK_RATE_HZ = 10;
     OS_TMR _timer;
     void *_object;
     typeCallback _callback;
