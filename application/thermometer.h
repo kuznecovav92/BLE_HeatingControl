@@ -4,13 +4,15 @@
 class Thermometer {
 public:
     Thermometer() : _timerMesurement(this,
-                                     &TimerMesurementCallBack,
+                                     TimerMesurementCallBack,
                                      1_s,
-                                     os::Timer::Type::Periodic),
+                                     os::Timer::Type::Periodic,
+                                     1_s),
                     _timerIndication(this,
-                                     &TimerIndicationCallBack,
+                                     TimerIndicationCallBack,
                                      1_s,
-                                     os::Timer::Type::Periodic) {
+                                     os::Timer::Type::Periodic,
+                                     1_s) {
         _mesurementValue = 0;
         _timerMesurement.Start();
     }
