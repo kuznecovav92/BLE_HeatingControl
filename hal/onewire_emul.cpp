@@ -61,4 +61,10 @@ OneWireEmul::Result OneWireEmul::Init(config_t &config) {
 
     // Clear any false IRQ/DMA request
     USART_IntClear(config.port, ~0x0);
+
+    return Result::Success;
+}
+
+OneWireEmul::Result OneWireEmul::WriteThreadSafety(tools::typeUniqueBuffer buffer) {
+    return Result::Success;
 }

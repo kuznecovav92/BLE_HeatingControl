@@ -64,5 +64,6 @@
         "xutility": "cpp",
         "array": "cpp",
         "functional": "cpp"
-    }
+    },
+    "commentTranslate.hover.enabled": true
 }

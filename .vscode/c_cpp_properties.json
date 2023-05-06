@@ -1,8 +1,8 @@
 {
     "env": {
         "ProjName": "BLE_HeatingControl",
-        "StudioSdkPath": "d:/Kuznecovav/Distrib/SiliconLabs/SDK/4.2.0",
-        "workspace_loc": "c:/Users/kuznecovav.ZAV/SimplicityStudio/v5_workspace",
+        "StudioSdkPath": "d:/Distrib/Silabs/SDK/4.2.0",
+        "workspace_loc": "c:/Users/Alexandr/SimplicityStudio/v5_workspace",
         "StdLibraryPath": "c:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/gnu_arm/10.3_2021.10"
     },
     "configurations": [

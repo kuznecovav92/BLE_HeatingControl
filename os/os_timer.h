@@ -12,7 +12,6 @@ namespace os {
 
 #define OS_TIMER_ENABLED
 
-
 class Timer {
 public:
     enum class Type : uint8_t {

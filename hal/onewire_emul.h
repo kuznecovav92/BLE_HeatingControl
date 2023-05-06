@@ -13,11 +13,6 @@ extern "C" {
 
 class OneWireEmul : public IDataExchange {
 public:
-    enum class Result : uint8_t {
-        Success,
-        ErrorPort,
-        ErrorFatal,
-    };
     typedef struct {
         USART_TypeDef *port;  /* The peripheral used for UART */
         uint8_t uartNum;      /* UART instance number */
@@ -29,7 +24,7 @@ public:
     } config_t;
     OneWireEmul(const IRQn irqNumber);
     Result Init(config_t &config);
-
+    Result WriteThreadSafety(tools::typeUniqueBuffer buffer) override;
 private:
     const IRQn _irqNumber;
 };
