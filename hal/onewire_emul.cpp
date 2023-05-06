@@ -12,7 +12,7 @@ OneWireEmul::OneWireEmul(const IRQn irqNumber) : _irqNumber(irqNumber) {
     
 }
 
-OneWireEmul::Result OneWireEmul::Init(config_t &config) {
+OneWireEmul::Result OneWireEmul::Init(const UARTDRV_InitUart_t &config) {
     CMU_Clock_TypeDef clock;
     if (config.port == USART0) {
         clock = cmuClock_USART0;

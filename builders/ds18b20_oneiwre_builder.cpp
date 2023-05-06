@@ -1,6 +1,5 @@
 #include "ds18b20_onewire_builder.h"
 #include "tools/interrupt.h"
-#include "uartdrv.h"
 
 OneWireEmul &Ds18b20_OneWireBuilder::Make() {
 	if(_oneWirePointer == nullptr) {
