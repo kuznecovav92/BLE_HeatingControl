@@ -9,6 +9,7 @@
         {
             "name": "GCC",
             "includePath": [
+                "${workspaceFolder}/**",
                 "${workspace_loc}/${ProjName}",
                 "${workspace_loc}/${ProjName}/config",
                 "${workspace_loc}/${ProjName}/config/btconf",
@@ -94,11 +95,10 @@
                 "SLI_RADIOAES_REQUIRES_MASKING=1",
                 "RADIO_TX_POWER=0"
             ],
-            "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "",
-            "intelliSenseMode": "clang-arm",
+            "compilerPath": "C:/SiliconLabs/SimplicityStudio/v5/developer/toolchains/gnu_arm/10.3_2021.10/bin/arm-none-eabi-gcc",
             "cStandard": "c99",
-            "cppStandard": "c++17"
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-arm",
         }
     ],
     "version": 4

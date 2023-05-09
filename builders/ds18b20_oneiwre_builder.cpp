@@ -4,11 +4,8 @@
 OneWireEmul &Ds18b20_OneWireBuilder::Make() {
 	if(_oneWirePointer == nullptr) {
 		constexpr auto queueSize = 1;
-		/* Define RX and TX buffer queues */
-		DEFINE_BUF_QUEUE(queueSize, bufferQueueRxUart);
-		DEFINE_BUF_QUEUE(queueSize, bufferQueueTxUart);
 		/* Create uartdrv initialization structs */
-		const UARTDRV_InitUart_t config = {
+		const OneWireEmul::config_t config = {
 			.port = USART2,
 			.baudRate = 9600,
 			.txPort = gpioPortD,
@@ -20,16 +17,8 @@ OneWireEmul &Ds18b20_OneWireBuilder::Make() {
 			.parity = usartNoParity,
 			.oversampling = usartOVS16,
 			.mvdis = false,
-			.fcType = uartdrvFlowControlNone,
-			.ctsPort = gpioPortD,
-			.ctsPin = 0,
-			.rtsPort = gpioPortD,
-			.rtsPin = 0,
-			.rxQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueRxUart,
-			.txQueue = (UARTDRV_Buffer_FifoQueue_t *)&bufferQueueTxUart
 		};
-		static OneWireEmul onewire(USART2_RX_IRQn);
-		onewire.Init(config);
+		static OneWireEmul onewire(config);
 		_oneWirePointer = &onewire;
 	}
 	return *_oneWirePointer;

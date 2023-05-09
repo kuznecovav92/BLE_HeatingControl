@@ -8,11 +8,7 @@ extern "C" {
 }
 #endif
 
-OneWireEmul::OneWireEmul(const IRQn irqNumber) : _irqNumber(irqNumber) {
-    
-}
-
-OneWireEmul::Result OneWireEmul::Init(const UARTDRV_InitUart_t &config) {
+OneWireEmul::Result OneWireEmul::Init(const config_t &config) {
     CMU_Clock_TypeDef clock;
     if (config.port == USART0) {
         clock = cmuClock_USART0;
@@ -66,5 +62,13 @@ OneWireEmul::Result OneWireEmul::Init(const UARTDRV_InitUart_t &config) {
 }
 
 OneWireEmul::Result OneWireEmul::WriteThreadSafety(tools::typeUniqueBuffer buffer) {
+    if (_mutex.Pend(100_ms) != os::Mutex::Result::Success)
+        return Result::Busy;
+
+    while(buffer->Count()) {
+        USART_Tx(const_cast<USART_TypeDef*>(&_uart), buffer->TakeFront<uint8_t>());
+    }
+
+    _mutex.Post();
     return Result::Success;
 }
